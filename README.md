@@ -1,6 +1,6 @@
 # TO WORK
 You need to create a folder called audio and add your music there.
-Then in the App.js file, import your musi and in the tracks list change the code.
+Then in the App.js file, import your music and in the tracks list change the code.
 
 ## Available Scripts
 
