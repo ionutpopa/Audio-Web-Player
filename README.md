@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TO WORK
+You need to create a folder called audio and add your music there.
+Then in the App.js file, import your musi and in the tracks list change the code.
 
 ## Available Scripts
 
