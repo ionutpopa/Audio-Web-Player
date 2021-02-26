@@ -5,7 +5,7 @@ import PlayList from "./components/playlist/playlist";
 
 import Video from "./videos/Particles.mp4";
 
-import "./App.scss";
+import "./App.css";
 
 import beat_2 from "./audio/beat-2.wav";
 import beat_1 from "./audio/beat-1.wav";
@@ -20,7 +20,7 @@ const tracks = [
     id: 1,
     title: "Beat 2",
     src: beat_2,
-  },
+  }
 ];
 
 function App() {

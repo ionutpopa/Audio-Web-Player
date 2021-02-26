@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 import WaveSurfer from "wavesurfer.js";
 
-import "./audio-bar.scss";
+import "./audio-bar.css";
 
 const formWaveSurferOptions = (ref) => ({
   container: ref,

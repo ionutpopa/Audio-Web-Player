@@ -1,21 +1,21 @@
 import { useState } from "react";
 
-import "./playlist.scss";
+import "./playlist.css";
 
 const PlayList = ({ setPlaying, tracks, selectedTrack, setSelectedTrack }) => {
   const [playlist, setPlaylist] = useState(false)
   const [arrows, setArrows] = useState(true)
   const openPlaylist = () => {
-    setPlaylist(true)
     setArrows(false)
+    setPlaylist(true)
   };
   const closePlaylist = () => {
     setPlaylist(false)
     setArrows(true)
   }
   return (
-    <div>
-      <div onClick={closePlaylist} id={playlist ? "playlist" : null}>
+    <div className="playlist-container">
+      <div onClick={closePlaylist} id={playlist ? "playlist" : "disable-playlist"}>
         {tracks.map((track) => (
           <div
             key={track.id}
@@ -30,7 +30,7 @@ const PlayList = ({ setPlaying, tracks, selectedTrack, setSelectedTrack }) => {
           </div>
         ))}
       </div>
-      <div id={arrows ? "arrows" : null}>
+      <div id={arrows ? "arrows" : "disable-arrows"}>
         <i
           onClick={openPlaylist}
           className="fa fa-angle-double-up"

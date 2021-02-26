@@ -1,0 +1,27 @@
+.audio-bar-container .waveform {
+  position: relative;
+  top: 100%;
+}
+
+.audio-bar-container .controls {
+  display: flex;
+  position: absolute;
+  bottom: calc(0% + 105px);
+  left: 0;
+  right: 0;
+  justify-content: center;
+  color: white;
+}
+
+.audio-bar-container .controls .play-button {
+  padding: 10px 15px; /* 5px sus jos 10px stanga dreapta */
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.play-button .fa-play {
+  font-size: 25px;
+}
+.play-button .fa-pause {
+  font-size: 25px;
+}
