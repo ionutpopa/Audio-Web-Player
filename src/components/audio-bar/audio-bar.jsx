@@ -13,7 +13,6 @@ const formWaveSurferOptions = (ref) => ({
   barRadius: 3,
   responsive: true,
   height: 150,
-  // If true, normalize by the maximum peak instead of 1.0.
   normalize: true,
   backend: "MediaElement",
 });
@@ -31,12 +30,6 @@ const AudioBar = ({ src, setPlaying, playing }) => {
     wavesurfer.current.load(src);
 
     wavesurfer.current.on("ready", function () {
-      // https://wavesurfer-js.org/docs/methods.html
-      // wavesurfer.current.play();
-      // setPlaying(true);
-
-      // make sure object still available when file loaded
-      // fara asta cand schimbi volumul trebuie sa isi dea reload componenta
       if (wavesurfer.current) {
         wavesurfer.current.setVolume(volume);
         setVolume(volume);
@@ -44,11 +37,9 @@ const AudioBar = ({ src, setPlaying, playing }) => {
     });
 
     wavesurfer.current.on("finish", function () {
-      console.log("piesa s-a terminat");
       setPlaying(false)
     });
 
-    // Dupa ce se termina, distrugem instanta de wavesurfer ca sa nu porneasca doua audiobaruri
     return () => wavesurfer.current.destroy();
   }, [src]);
 
@@ -82,8 +73,6 @@ const AudioBar = ({ src, setPlaying, playing }) => {
           type="range"
           id="volume"
           name="volume"
-          // waveSurfer recognize value of `0` same as `1`
-          //  so we need to set some zero-ish value for silence
           min="0"
           max="1"
           step=".025"
