@@ -59,6 +59,7 @@ const AudioBar = ({ src, setPlaying, playing }) => {
     });
 
     return () => wavesurfer.current.destroy();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
   const handlePlayPause = () => {
