@@ -4,10 +4,6 @@ body {
   overflow-x: hidden;
 }
 
-:root {
-  font-size: 24px;
-}
-
 .main {
   font-family: "Noto Sans", sans-serif;
   display: flex;
@@ -35,5 +31,15 @@ video {
 @supports (-ms-ime-align: auto) {
   video {
     height: auto !important;
+  }
+}
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+  .texts h1 {
+    font-size: 20px;
+  }
+  .texts p {
+    font-size: 14px;
   }
 }

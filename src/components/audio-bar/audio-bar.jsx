@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+import useWindowDimensions from "../user-dimensions/user-dimensions";
 
 import WaveSurfer from "wavesurfer.js";
 
 import "./audio-bar.css";
+
+let waveHeight;
 
 const formWaveSurferOptions = (ref) => ({
   container: ref,
@@ -12,22 +15,37 @@ const formWaveSurferOptions = (ref) => ({
   barWidth: 3,
   barRadius: 3,
   responsive: true,
-  height: 150,
+  height: waveHeight < 768 ? 160 : 120,
   normalize: true,
   backend: "MediaElement",
 });
 
 const AudioBar = ({ src, setPlaying, playing }) => {
+  const { width } = useWindowDimensions();
+
+  if (width < 768) {
+    waveHeight = 120;
+  } else {
+    waveHeight = 160
+  }
+
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
-  
+
   const [volume, setVolume] = useState(0.5);
+  const [loading, setLoading] = useState(0);
 
   useEffect(() => {
     const options = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
 
     wavesurfer.current.load(src);
+
+    wavesurfer.current.on('loading', function(x, evt) {
+      setTimeout(() => {
+        setLoading(x)
+      }, 1000);
+    });
 
     wavesurfer.current.on("ready", function () {
       if (wavesurfer.current) {
@@ -37,7 +55,7 @@ const AudioBar = ({ src, setPlaying, playing }) => {
     });
 
     wavesurfer.current.on("finish", function () {
-      setPlaying(false)
+      setPlaying(false);
     });
 
     return () => wavesurfer.current.destroy();
@@ -56,10 +74,11 @@ const AudioBar = ({ src, setPlaying, playing }) => {
       setVolume(newVolume);
       wavesurfer.current.setVolume(newVolume || 1);
     }
-  };  
+  };
 
   return (
     <div className="audio-bar-container">
+      {loading >= 100 ? null : <p className="loading">loading: {loading}</p>}
       <div className="waveform" ref={waveformRef} />
       <div className="controls">
         <div className="play-button" onClick={handlePlayPause}>

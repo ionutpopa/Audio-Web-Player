@@ -7,8 +7,8 @@ import Video from "./videos/Particles.mp4";
 
 import "./App.css";
 
-import beat_2 from "./audio/beat-2.wav";
-import beat_1 from "./audio/beat-1.wav";
+import beat_1 from "./audio/beat-1.mp3";
+import beat_2 from "./audio/beat-2.mp3";
 
 const tracks = [
   {

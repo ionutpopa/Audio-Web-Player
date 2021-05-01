@@ -3,19 +3,22 @@ import { useState } from "react";
 import "./playlist.css";
 
 const PlayList = ({ setPlaying, tracks, selectedTrack, setSelectedTrack }) => {
-  const [playlist, setPlaylist] = useState(false)
-  const [arrows, setArrows] = useState(true)
+  const [playlist, setPlaylist] = useState(false);
+  const [arrows, setArrows] = useState(true);
   const openPlaylist = () => {
-    setArrows(false)
-    setPlaylist(true)
+    setArrows(false);
+    setPlaylist(true);
   };
   const closePlaylist = () => {
-    setPlaylist(false)
-    setArrows(true)
-  }
+    setPlaylist(false);
+    setArrows(true);
+  };
   return (
     <div className="playlist-container">
-      <div onClick={closePlaylist} id={playlist ? "playlist" : "disable-playlist"}>
+      <div
+        onClick={closePlaylist}
+        id={playlist ? "playlist" : "disable-playlist"}
+      >
         {tracks.map((track) => (
           <div
             key={track.id}
