@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import useWindowDimensions from "../user-dimensions/user-dimensions";
 
 import WaveSurfer from "wavesurfer.js";
 
 import "./audio-bar.css";
-
-let waveHeight;
 
 const formWaveSurferOptions = (ref) => ({
   container: ref,
@@ -15,19 +12,12 @@ const formWaveSurferOptions = (ref) => ({
   barWidth: 3,
   barRadius: 3,
   responsive: true,
-  height: waveHeight < 768 ? 160 : 120,
+  height: 150,
   normalize: true,
   backend: "MediaElement",
 });
 
 const AudioBar = ({ src, setPlaying, playing }) => {
-  const { width } = useWindowDimensions();
-
-  if (width < 768) {
-    waveHeight = 120;
-  } else {
-    waveHeight = 160
-  }
 
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
@@ -57,6 +47,8 @@ const AudioBar = ({ src, setPlaying, playing }) => {
     wavesurfer.current.on("finish", function () {
       setPlaying(false);
     });
+
+    wavesurfer.current.on()
 
     return () => wavesurfer.current.destroy();
   // eslint-disable-next-line react-hooks/exhaustive-deps

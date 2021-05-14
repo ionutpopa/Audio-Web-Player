@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .main {
@@ -26,6 +26,20 @@ video {
   height: 100vh;
   width: 100%;
   z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ion {
+  transition: 200ms;
+}
+
+.ion:hover {
+  color: #1a88f0;
+  transition: 200ms;
 }
 
 @supports (-ms-ime-align: auto) {

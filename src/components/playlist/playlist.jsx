@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import "./playlist.css";
 
 const PlayList = ({ setPlaying, tracks, selectedTrack, setSelectedTrack }) => {
   const [playlist, setPlaylist] = useState(false);
   const [arrows, setArrows] = useState(true);
+  const menu = useRef()
+
   const openPlaylist = () => {
     setArrows(false);
     setPlaylist(true);
   };
+
   const closePlaylist = () => {
     setPlaylist(false);
     setArrows(true);
   };
+  
   return (
     <div className="playlist-container">
       <div
@@ -33,7 +37,7 @@ const PlayList = ({ setPlaying, tracks, selectedTrack, setSelectedTrack }) => {
           </div>
         ))}
       </div>
-      <div id={arrows ? "arrows" : "disable-arrows"}>
+      <div ref={menu} id={arrows ? "arrows" : "disable-arrows"}>
         <i
           onClick={openPlaylist}
           className="fa fa-angle-double-up"
